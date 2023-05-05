@@ -1,0 +1,148 @@
+<RelativeLayout
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".login">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/splash"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/SignUpText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Signup"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/logo"
+        />
+
+    <EditText
+        android:id="@+id/firstName"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="First name"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/SignUpText"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/montserrat_light_italic"
+        android:textSize="15dp"
+        />
+
+    <EditText
+        android:id="@+id/lastName"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Last name"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/firstName"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/montserrat_light_italic"
+        android:textSize="15dp"
+        />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="Email"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/lastName"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/montserrat_light_italic"
+        android:textSize="15dp"
+        />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:hint="Phone (+92xxxxxxxxxx)"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/email"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/montserrat_light_italic"
+        android:textSize="15dp"
+        />
+
+    <EditText
+        android:id="@+id/signUpPass"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Password"
+        android:fontFamily="@font/montserrat_light_italic"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:inputType="textPassword"
+        android:layout_below="@id/phone"
+        android:maxLines="1"
+        android:minLines="1"
+        android:textSize="15dp"
+        />
+
+    <TextView
+        android:id="@+id/passwordError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:layout_below="@+id/signUpPass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:id="@+id/SignUpButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Signup"
+        android:layout_below="@id/passwordError"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        />
+
+    <TextView
+        android:id="@+id/LoginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="Account already exists? Login"
+        android:fontFamily="@font/montserrat_light_italic"
+        android:textAllCaps="false"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/SignUpButton"
+        android:textColor="@color/buttons_reject"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="onLoginButtonClick"
+        android:layout_centerHorizontal="true"
+        />
+</RelativeLayout>

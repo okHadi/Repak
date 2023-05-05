@@ -1,11 +1,12 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
     namespace 'com.repak.repak'
     compileSdk 33
-
     defaultConfig {
         applicationId "com.repak.repak"
         minSdk 26
@@ -15,7 +16,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -30,11 +30,16 @@ android {
         repositories {
             google()
             jcenter()
+            mavenCentral()  // Maven Central repository
         }
     }
 }
 
 dependencies {
+    implementation platform('com.google.firebase:firebase-bom:31.5.0')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-database:20.0.0'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation 'com.google.android.material:material:1.9.0-rc01'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'

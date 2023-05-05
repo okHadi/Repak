@@ -10,4 +10,5 @@
     <color name="background">#221D1D</color>
     <color name="buttons_approve">#1022c4</color>
     <color name="buttons_reject">#a1a1a1</color>
+    <color name="red">#FF0000</color>
 </resources>

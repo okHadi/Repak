@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "877896947029",
+    "project_id": "repak-5fe0a",
+    "storage_bucket": "repak-5fe0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877896947029:android:338188f2d177002036cbdc",
+        "android_client_info": {
+          "package_name": "com.repak.repak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "877896947029-qbj060uvsf4ms8p0ldt3co4e225m65lm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDV4n7He9brCp7KJ5v7OLIyofIq87SXkyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "877896947029-qbj060uvsf4ms8p0ldt3co4e225m65lm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
