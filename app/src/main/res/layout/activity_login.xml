@@ -62,11 +62,10 @@
         android:id="@+id/LoginButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Login"
         android:layout_below="@id/password"
         android:layout_centerInParent="true"
         android:layout_marginTop="30dp"
-        />
+        android:text="Login" />
 
 
     <TextView

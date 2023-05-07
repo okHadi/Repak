@@ -1,0 +1,114 @@
+<RelativeLayout android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".login"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/OTP"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/otp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/Verification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Verification"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/OTP"
+        />
+
+    <TextView
+        android:id="@+id/verificationDetails"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Verification"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/montserrat_light"
+        android:text="We have sent you a confirmation link on your email and OTP on your phone number"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="12dp" />
+
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mobileOTP"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:hint="OTP"
+        android:layout_below="@id/verificationDetails"
+        app:boxStrokeColor="@color/white"
+        app:boxStrokeWidth="2dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mobileOTPeditText"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/montserrat_light_italic"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/verifyButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mobileOTP"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
+        android:text="Verify" />
+
+    <TextView
+        android:id="@+id/emailMessage"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/verifyButton"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/montserrat_light"
+        android:text="Make sure to check your spam folder for email verification link."
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/resendEmailLink"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/emailMessage"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/montserrat_light_italic"
+        android:text="Resend email link"
+        android:textColor="@color/buttons_reject"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:textSize="12dp" />
+    <TextView
+        android:id="@+id/resendMobileOTP"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/resendEmailLink"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/montserrat_light_italic"
+        android:text="Resend mobile OTP"
+        android:textColor="@color/buttons_reject"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="12dp" />
+
+</RelativeLayout>
