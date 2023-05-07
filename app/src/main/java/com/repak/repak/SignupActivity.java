@@ -14,21 +14,11 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthOptions;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
 
-import java.util.concurrent.TimeUnit;
+
 
 public class SignupActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
     private EditText firstNameEditText, lastNameEditText, emailEditText, phoneEditText, passwordEditText, otpEditText;
     private Button signUpButton, verifyOTPButton;
     private static final String PHONE_REGEX = "^\\+(?:[0-9] ?){6,14}[0-9]$";
@@ -70,8 +60,6 @@ public class SignupActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         firstNameEditText = findViewById(R.id.firstName);
@@ -118,28 +106,18 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(SignupActivity.this, "Please fill in all required fields.", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                // Create an Intent object to start the ConfirmOTPSignUp activity
+                Intent intent = new Intent(SignupActivity.this, ConfirmOTPSignUp.class);
 
-                // Create a new user with email and password
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                // Sign in success, send verification email
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                user.sendEmailVerification()
-                                        .addOnCompleteListener(task1 -> {
-                                            if (!task1.isSuccessful()) {
-                                                Toast.makeText(getApplicationContext(),
-                                                        "Failed to send verification email to " + user.getEmail(),
-                                                        Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Toast.makeText(getApplicationContext(),
-                                        "Authentication failed: " + task.getException().getMessage(),
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                intent.putExtra("first_name", firstName);
+                intent.putExtra("last_name", lastName);
+                intent.putExtra("email", email);
+                intent.putExtra("phone", phone);
+                intent.putExtra("password", password);
+
+                // Start the ConfirmOTPSignUp activity
+                startActivity(intent);
+
 
 
 
