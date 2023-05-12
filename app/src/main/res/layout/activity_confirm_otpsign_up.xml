@@ -70,6 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/mobileOTP"
         android:layout_centerInParent="true"
+        android:backgroundTint="@color/buttons_approve"
         android:layout_marginTop="50dp"
         android:text="Verify" />
 
@@ -83,6 +84,7 @@
         android:text="Make sure to check your spam folder for email verification link."
         android:textColor="@color/white"
         android:layout_marginTop="30dp"
+
         android:gravity="center"
         android:textSize="12dp" />
 

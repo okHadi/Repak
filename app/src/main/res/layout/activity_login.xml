@@ -65,6 +65,7 @@
         android:layout_below="@id/password"
         android:layout_centerInParent="true"
         android:layout_marginTop="30dp"
+        android:backgroundTint="@color/buttons_approve"
         android:text="Login" />
 
 

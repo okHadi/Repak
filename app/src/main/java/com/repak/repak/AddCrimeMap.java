@@ -33,16 +33,19 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddCrimeMap extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnCameraMoveListener {
+    private LatLng mLatLng;
 
     private GoogleMap mMap;
     private Marker mMarker;
     private EditText mSearchText;
+    private FusedLocationProviderClient mFusedLocationProviderClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,20 +57,7 @@ public class AddCrimeMap extends FragmentActivity implements OnMapReadyCallback,
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        mSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH
-                        || actionId == EditorInfo.IME_ACTION_DONE
-                        || keyEvent.getAction() == KeyEvent.ACTION_DOWN
-                        || keyEvent.getAction() == KeyEvent.KEYCODE_ENTER) {
-                    // execute our method for searching
-                    geoLocate();
-                }
-
-                return false;
-            }
-        });
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
     }
 
     @Override
@@ -83,12 +73,19 @@ public class AddCrimeMap extends FragmentActivity implements OnMapReadyCallback,
         mMap.setOnCameraMoveListener(this);
 
         // move the camera to the user's current location
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mFusedLocationProviderClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location != null) {
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 15f));
+                            }
+                        }
+                    });
+        } else {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-            return;
         }
 
         mMap.setMyLocationEnabled(true);
@@ -117,7 +114,18 @@ public class AddCrimeMap extends FragmentActivity implements OnMapReadyCallback,
 
     @Override
     public void onCameraMove() {
-        LatLng center = mMap.getCameraPosition().target;
-        mMarker.setPosition(center);
+        mLatLng = mMap.getCameraPosition().target;
+        mMarker.setPosition(mLatLng);
+    }
+    public void onSaveButtonClick(View view) {
+        if (mLatLng != null) {
+            // Save the coordinates here
+            double latitude = mLatLng.latitude;
+            double longitude = mLatLng.longitude;
+            Toast.makeText(this, "Coordinates saved: " + latitude + ", " + longitude, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Please select a location!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
+

@@ -17,6 +17,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="View Database"
+        android:backgroundTint="@color/buttons_approve"
         android:layout_below="@id/logo"
         android:layout_centerInParent="true" />
     <Button

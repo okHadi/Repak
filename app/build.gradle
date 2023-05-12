@@ -3,7 +3,7 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
-
+apply plugin: "realm-android"
 android {
     namespace 'com.repak.repak'
     compileSdk 33
@@ -15,6 +15,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    realm {
+        syncEnabled = true
     }
     buildTypes {
         release {
@@ -40,7 +43,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-database:20.0.0'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
-
     implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.google.android.material:material:1.9.0-rc01'
     implementation 'androidx.appcompat:appcompat:1.6.1'
