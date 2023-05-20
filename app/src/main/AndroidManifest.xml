@@ -16,7 +16,12 @@
         android:theme="@style/Theme.Repak"
         tools:targetApi="31">
         <activity
+            android:name=".CrimeDetails"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
+        <activity
             android:name=".ConfirmOTPSignUp"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
 
         <meta-data
@@ -28,15 +33,18 @@
 
         <activity
             android:name=".AddCrimeMap"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".SignupActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".login"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".viewDB"

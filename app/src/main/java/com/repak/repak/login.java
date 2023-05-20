@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,17 +18,21 @@ import com.google.firebase.auth.FirebaseUser;
 public class login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private EditText emailEditText, passwordEditText;
+    private Button loginButton;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         mAuth = FirebaseAuth.getInstance();
         emailEditText = findViewById(R.id.email);
         passwordEditText = findViewById(R.id.password);
+        loginButton = findViewById(R.id.LoginButton);
+        progressBar = findViewById(R.id.progressBar);
 
         // Handle Login Button Click
-        Button loginButton = findViewById(R.id.LoginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,14 +57,26 @@ public class login extends AppCompatActivity {
                     return;
                 }
 
+                progressBar.setVisibility(View.VISIBLE); // Show the loading indicator
+
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(task -> {
+                            progressBar.setVisibility(View.GONE); // Hide the loading indicator
+
                             if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
+                                // Check if the email is verified
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                Intent intent = new Intent(login.this, AddCrimeMap.class);
-                                startActivity(intent);
-                                finish();
+                                if (user.isEmailVerified()) {
+                                    // Email is verified, proceed with login
+                                    Intent intent = new Intent(login.this, AddCrimeMap.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    // Email is not verified, display an error message and delete the user
+                                    Toast.makeText(login.this, "Email not verified, create a new account.",
+                                            Toast.LENGTH_SHORT).show();
+                                    mAuth.getCurrentUser().delete();
+                                }
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Toast.makeText(login.this, "Email or password is incorrect.",

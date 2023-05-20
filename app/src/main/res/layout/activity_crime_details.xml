@@ -1,0 +1,93 @@
+<RelativeLayout
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".login">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/splash"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/CrimeDetailsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Crime details"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/logo"
+        />
+
+    <TextView
+        android:id="@+id/typeOfCrimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CrimeDetailsText"
+        android:text="Type of crime"
+    android:layout_marginTop="15dp"
+        android:layout_marginLeft="35dp"
+        android:textColor="@color/white"
+
+android:textSize="18dp"
+        android:fontFamily="@font/montserrat_semibold"
+        />
+
+    <Spinner
+        android:id="@+id/crimeSpinner"
+        android:layout_width="32dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/CrimeDetailsText"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp"
+        android:spinnerMode="dropdown"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        android:layout_toRightOf="@+id/typeOfCrimeText"
+        />
+
+    <TextView
+        android:id="@+id/dateOfCrime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/typeOfCrimeText"
+        android:text="Date of activity"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="35dp"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:fontFamily="@font/montserrat_semibold"
+        />
+
+    <Spinner
+        android:id="@+id/dateSpinner"
+        android:layout_width="32dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/crimeSpinner"
+        android:layout_marginLeft="165dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp"
+        android:spinnerMode="dropdown"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        android:layout_toRightOf="@+id/dateOfCrime"
+
+         />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/buttons_approve"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/dateOfCrime"
+        android:text="Submit report"
+        android:id="@+id/submitCrimeReport"/>
+</RelativeLayout>

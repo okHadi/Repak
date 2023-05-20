@@ -9,43 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-
-        android:id="@+id/search_layout"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:hint="Search for a location"
-        android:inputType="text"
-        android:padding="8dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/search_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:inputType="text"
-            android:fontFamily="@font/montserrat_light"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
     <Button
-        android:id="@+id/save_location"
+        android:id="@+id/saveLocationButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Save location"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="570dp"
         android:backgroundTint="@color/buttons_approve"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true" />
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
-    android:layout_marginTop="575dp"
+    android:layout_marginTop="540dp"
     android:text="Drag the pin to select the location of crime."
-android:fontFamily="@font/montserrat"
+android:fontFamily="@font/montserrat_bold"
+    android:textColor="@color/black"
     />
 </RelativeLayout>

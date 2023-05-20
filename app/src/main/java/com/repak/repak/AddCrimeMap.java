@@ -1,24 +1,18 @@
 package com.repak.repak;
 
 import android.Manifest;
-import android.content.Context;
+
+import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
+
 import android.location.Location;
-import android.location.LocationManager;
+
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
+
+import android.widget.Button;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -34,30 +28,41 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class AddCrimeMap extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnCameraMoveListener {
     private LatLng mLatLng;
-
+    private Button saveLocation ;
     private GoogleMap mMap;
     private Marker mMarker;
-    private EditText mSearchText;
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_crime_map);
-        mSearchText = (EditText) findViewById(R.id.search_input);
-
+        saveLocation = findViewById(R.id.saveLocationButton);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        saveLocation.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                if (mLatLng != null) {
+                    // Save the coordinates here
+                    double latitude = mLatLng.latitude;
+                    double longitude = mLatLng.longitude;
+                    Intent intent = new Intent(AddCrimeMap.this, CrimeDetails.class);
+                    intent.putExtra("latitude", latitude);
+                    intent.putExtra("longitude", longitude);
+                    // Start the next activity with the intent
+                    startActivity(intent);
+
+                } else {
+                    Log.d("TAG", "Location not set.");
+                }
+            }
+        });
     }
 
     @Override
@@ -93,39 +98,12 @@ public class AddCrimeMap extends FragmentActivity implements OnMapReadyCallback,
         mMap.getUiSettings().setZoomControlsEnabled(true);
     }
 
-    private void geoLocate() {
-        String searchString = mSearchText.getText().toString();
-
-        Geocoder geocoder = new Geocoder(AddCrimeMap.this);
-        List<Address> list = new ArrayList<>();
-        try {
-            list = geocoder.getFromLocationName(searchString, 1);
-        } catch (IOException e) {
-            Log.e("TAG", "geoLocate: IOException: " + e.getMessage());
-        }
-
-        if (list.size() > 0) {
-            Address address = list.get(0);
-
-            // move the camera to the searched location
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(address.getLatitude(), address.getLongitude()), 15f));
-        }
-    }
 
     @Override
     public void onCameraMove() {
         mLatLng = mMap.getCameraPosition().target;
         mMarker.setPosition(mLatLng);
     }
-    public void onSaveButtonClick(View view) {
-        if (mLatLng != null) {
-            // Save the coordinates here
-            double latitude = mLatLng.latitude;
-            double longitude = mLatLng.longitude;
-            Toast.makeText(this, "Coordinates saved: " + latitude + ", " + longitude, Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Please select a location!", Toast.LENGTH_SHORT).show();
-        }
-    }
+
 }
 

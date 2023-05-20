@@ -80,6 +80,7 @@ public class ConfirmOTPSignUp extends AppCompatActivity {
                     otpEditText.requestFocus();
                 }
                 else {
+
                     PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, otp);
                     mAuth.signInWithCredential(credential)
                             .addOnCompleteListener(ConfirmOTPSignUp.this, new OnCompleteListener<AuthResult>() {

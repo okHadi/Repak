@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "877896947029",
+    "firebase_url": "https://repak-5fe0a-default-rtdb.firebaseio.com",
     "project_id": "repak-5fe0a",
     "storage_bucket": "repak-5fe0a.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "877896947029-a9bumgto8r8cp6d406o1lp719jgb6fvo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.repak.repak",
+            "certificate_hash": "bb997c36cd86efaa6b85e505b6cfd860ea10ce4b"
+          }
+        },
         {
           "client_id": "877896947029-qbj060uvsf4ms8p0ldt3co4e225m65lm.apps.googleusercontent.com",
           "client_type": 3

@@ -1,0 +1,35 @@
+[33mcommit 67ea9e35f5e47287d98c43354b5eff5ad3423d7a[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Hadi Khan <khan.hadi2951@gmail.com>
+Date:   Mon May 8 03:41:43 2023 +0500
+
+    working version, google maps working with search aswell.
+
+[33mcommit 67e94d0764be56c8122b0011671870d684c808e1[m
+Author: Hadi Khan <khan.hadi2951@gmail.com>
+Date:   Mon May 8 03:34:35 2023 +0500
+
+    working version, google maps coming up after signing in.
+
+[33mcommit baef70545389a9be50ea7107916a2487acd89b82[m
+Author: Hadi Khan <khan.hadi2951@gmail.com>
+Date:   Sun May 7 15:47:53 2023 +0500
+
+    adding phone auth
+
+[33mcommit 4421213c29aafd1f5d99fc0442f100bf5b6c525d[m
+Author: Hadi Khan <khan.hadi2951@gmail.com>
+Date:   Fri May 5 12:48:57 2023 +0500
+
+    added firebase authentication and google maps configuration
+
+[33mcommit bc717d97dcd280924255a836a0a8f1f2e432d949[m
+Author: Hadi Khan <khan.hadi2951@gmail.com>
+Date:   Sun Apr 30 01:26:12 2023 +0500
+
+    splash screen and first page added
+
+[33mcommit 3dc096c6f2c2ffe7730aff76e10ad98b40d762f8[m
+Author: Hadi Khan <khan.hadi2951@gmail.com>
+Date:   Sat Mar 18 19:18:36 2023 +0500
+
+    Initial commit
