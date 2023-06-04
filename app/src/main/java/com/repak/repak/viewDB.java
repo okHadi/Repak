@@ -1,6 +1,7 @@
 package com.repak.repak;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -136,5 +137,11 @@ public class viewDB extends FragmentActivity implements OnMapReadyCallback {
                 Log.d("Location", "Location permission denied");
             }
         }
+    }
+
+    public void onBackPressed() {
+        // Start MainActivity when back button is pressed
+        Intent intent = new Intent(viewDB.this, MainActivity.class);
+        startActivity(intent);
     }
 }

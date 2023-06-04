@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/CrimeDetailsText"
-        android:text="Type of crime"
+        android:text="Type"
     android:layout_marginTop="15dp"
         android:layout_marginLeft="35dp"
         android:textColor="@color/white"
@@ -40,17 +40,19 @@ android:textSize="18dp"
         android:fontFamily="@font/montserrat_semibold"
         />
 
-    <Spinner
-        android:id="@+id/crimeSpinner"
-        android:layout_width="32dp"
-        android:layout_height="30dp"
+    <EditText
+        android:id="@+id/crimesSelector"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/CrimeDetailsText"
-        android:layout_marginLeft="180dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="235dp"
         android:layout_marginBottom="30dp"
         android:spinnerMode="dropdown"
-        android:theme="@android:style/Theme.Translucent.NoTitleBar"
-        android:layout_toRightOf="@+id/typeOfCrimeText"
+        android:hint="(e.g assault)"
+        android:fontFamily="@font/montserrat_light"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
         />
 
     <TextView
@@ -58,7 +60,7 @@ android:textSize="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/typeOfCrimeText"
-        android:text="Date of activity"
+        android:text="Date"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="35dp"
         android:textColor="@color/white"
@@ -66,20 +68,119 @@ android:textSize="18dp"
         android:fontFamily="@font/montserrat_semibold"
         />
 
-    <Spinner
-        android:id="@+id/dateSpinner"
-        android:layout_width="32dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/crimeSpinner"
-        android:layout_marginLeft="165dp"
+    <EditText
+        android:id="@+id/dayEditText"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/typeOfCrimeText"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="235dp"
+        android:inputType="number"
+        android:hint="DD"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
+        />
+
+    <EditText
+        android:id="@+id/monthEditText"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/typeOfCrimeText"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="10dp"
+android:layout_toRightOf="@id/dayEditText"
+        android:inputType="number"
+        android:hint="MM"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
+        />
+
+    <EditText
+        android:id="@+id/yearEditText"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/typeOfCrimeText"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="60dp"
+        android:layout_toRightOf="@id/dayEditText"
+        android:inputType="number"
+        android:hint="YY"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
+        />
+
+    <TextView
+        android:id="@+id/FIRUploadText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dateOfCrime"
+        android:text="Official Crime Report:"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="35dp"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:fontFamily="@font/montserrat_semibold"
+        />
+    <TextView
+        android:id="@+id/egFIR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/FIRUploadText"
+        android:text="(e.g FIR)"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="35dp"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:fontFamily="@font/montserrat_light"
+        />
+
+    <Button
+        android:id="@+id/uploadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/FIRUploadText"
+        android:layout_below="@id/yearEditText"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:text="Upload"
+        android:backgroundTint="@color/buttons_approve"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/CrimeDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/egFIR"
+        android:text="Details:"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="35dp"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:fontFamily="@font/montserrat_semibold"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/CrimeDetailsInput"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="30dp"
-        android:spinnerMode="dropdown"
-        android:theme="@android:style/Theme.Translucent.NoTitleBar"
-        android:layout_toRightOf="@+id/dateOfCrime"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/CrimeDetails">
 
-         />
-
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/CrimeDetailsInputText"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:hint="e.g it happened at night"
+            android:fontFamily="@font/montserrat_light_italic"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:layout_width="wrap_content"
@@ -87,7 +188,11 @@ android:textSize="18dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/buttons_approve"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/dateOfCrime"
+        android:layout_below="@id/CrimeDetailsInput"
         android:text="Submit report"
         android:id="@+id/submitCrimeReport"/>
+
+
+
+
 </RelativeLayout>
