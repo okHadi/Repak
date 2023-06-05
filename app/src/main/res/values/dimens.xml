@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="custom_marker_width">20dp</dimen>
+    <dimen name="custom_marker_height">20dp</dimen>
+</resources>

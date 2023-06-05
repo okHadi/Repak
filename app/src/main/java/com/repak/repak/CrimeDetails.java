@@ -98,6 +98,7 @@ public class CrimeDetails extends AppCompatActivity {
                                 Toast.makeText(CrimeDetails.this, "Crime report submitted successfully.", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(CrimeDetails.this, viewDB.class);
                                 startActivity(intent);
+                                finish();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
